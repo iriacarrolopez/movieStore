@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Pelicula, Genero, Director
 
+#hola es una prueba
+
 # Create your views here.
 def index(request):
 	context = {}
