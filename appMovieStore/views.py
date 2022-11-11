@@ -33,4 +33,8 @@ def peliculas_genero(request, genero_id, pelicula_id):
 	context = {'genero': genero, 'pelicula': pelicula}
 	return render(request, '', context)
 
-
+# # Devuelve la pelicula  con mas valoracion
+def peliculas_ranking(request):
+	peliculas=get_list_or_404(Pelicula.objects.order_by('valoracion'))
+	context = {'lista_peliculas': peliculas }
+	return render(request,'',context);
