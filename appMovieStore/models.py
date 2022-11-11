@@ -9,6 +9,8 @@ class Genero(models.Model):
 
 class Director(models.Model):
 	nombre = models.CharField(max_length=50)
+	nacionalidad = models.CharField(max_length=50)
+	fechaNac = models.DateField()
 	#fechaNac = models.DateField()
 	#nacionalidad = models.CharField(max_length=50)
 	def __str__(self):
@@ -19,6 +21,7 @@ class Pelicula(models.Model):
 	duracion = models.IntegerField(default=0)
 	año = models.IntegerField(default=0)
 	valoracion = models.IntegerField(default=0)
+	sinopsis = models.CharField(max_length=500)
 	#director = models.ForeignKey(Director, on_delete=models.CASCADE)
 	#genero = models.ForeignKey(Genero, on_delete=models.CASCADE)
 	def __str__(self):
