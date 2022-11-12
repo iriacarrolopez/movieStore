@@ -3,38 +3,33 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Pelicula, Genero, Director
 
-#hola es una prueba
-#EEEEEEEEEEEU
-# Create your views here.
-def index(request):
+def home(request):
 	context = {}
-	return render(request, "index.html", context)
+	return render(request, "home.html", context)
 
-def accion(request):
-	return render(request, "accion.html", {})
+#Devuelve un listado de directores
+def lista_directores(request):
+	lDirectores = Director.objects.all()
+	context = {'lDirectores': lDirectores}
+	return render(request, "listaDirectores.html", context)
 
-#Devuelve los detalles de una películas
-def detail_pelicula(request, pelicula_id):
-	pelicula = get_object_or_404(Pelicula, pk=pelicula_id);
-	context = {'pelicula': pelicula}
-	return render(request, "", context)
+def lista_peliculas(request):
 
-# #Devuelve los detalles de un director
+	return render(request, "listaPeliculas.html", {})
+
+def lista_generos(request):
+
+	return render(request, "listaGeneros.html", {})
+
 def detail_director(request, director_id):
-	director = get_object_or_404(Director, pk=director_id);
+	director = get_object_or_404(Director, pk=director_id)
 	context = {'director': director}
-	return render(request, '', context)
+	return render(request, "detailDirector.html", context)
 
-# #Devuelve las películas de un determinado género
-def peliculas_genero(request, genero_id, pelicula_id):
-	genero = get_object_or_404(Genero, pk=genero_id)
-	pelicula = get_object_or_404(Pelicula, pk=pelicula_id)
-	peliculas = genero.pelicula_set.all()
-	context = {'genero': genero, 'pelicula': pelicula}
-	return render(request, '', context)
+def detail_pelicula(request):
 
-# # Devuelve la pelicula  con mas valoracion
-def peliculas_ranking(request):
-	peliculas=get_list_or_404(Pelicula.objects.order_by('valoracion'))
-	context = {'lista_peliculas': peliculas }
-	return render(request,'',context);
+	return render(request, "detailPelicula.html", {})	
+
+def detail_genero(request):
+	
+	return render(request, "detailGenero.html", {})
