@@ -4,7 +4,8 @@ from django.http import HttpResponse
 from .models import Pelicula, Genero, Director
 
 def home(request):
-	context = {}
+	peliculas=get_list_or_404(Pelicula.objects.order_by('valoracion'))
+	context = {'lista_peliculas': peliculas}
 	return render(request, "home.html", context)
 
 #Devuelve un listado de directores
